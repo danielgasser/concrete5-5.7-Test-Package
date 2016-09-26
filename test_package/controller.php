@@ -3,7 +3,6 @@
 namespace Concrete\Package\TestPackage;
 
 use Concrete\Core\Asset\AssetList;
-use Concrete\Core\Asset;
 use Concrete\Core\Foundation\Service\ProviderList;
 use Concrete\Core\Package\Package;
 use Concrete\Core\Page\Page;
