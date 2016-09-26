@@ -4,6 +4,7 @@ namespace Concrete\Package\TestPackage;
 
 use Concrete\Core\Asset\AssetList;
 use Concrete\Core\Package\Package;
+use Concrete\Core\Block\BlockType\BlockType;
 use Concrete\Core\Page\Page;
 use Concrete\Core\Page\Single as SinglePage;
 use Concrete\Package\TestPackage\Help\HelpServiceProvider;
@@ -72,9 +73,8 @@ class Controller extends Package {
 
     private function installOrUpgrade($pkg)
     {
-
         $this->getOrAddSinglePage($pkg, '/dashboard/test', 'Test');
-
+        BlockType::installBlockType('test_package_block', $pkg);
     }
 
     private function getOrAddSinglePage($pkg, $cPath, $cName = '', $cDescription = '') {
