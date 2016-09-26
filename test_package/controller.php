@@ -56,10 +56,10 @@ class Controller extends Package {
         $pkg = $this;
         $al = AssetList::getInstance();
         $al->register(
-            'css', 'toesslab', 'css/toesslab.css', array('position' => \Asset::ASSET_POSITION_HEADER), $pkg
+            'css', 'foo', 'css/foo.css', array('position' => \Asset::ASSET_POSITION_HEADER), $pkg
         );
         $al->register(
-            'javascript', 'toesslab', 'js/toesslab.js', array('position' => \Asset::ASSET_POSITION_FOOTER), $pkg
+            'javascript', 'foo', 'js/foo.js', array('position' => \Asset::ASSET_POSITION_FOOTER), $pkg
         );
         $al->register(
             'css', 'selectize', 'js/libs/selectize/css/selectize.css', array('position' => \Asset::ASSET_POSITION_HEADER), $pkg
@@ -70,8 +70,8 @@ class Controller extends Package {
         $al->registerGroup('foo-bar', array(
             array('css', 'selectize'),
             array('javascript', 'selectize'),
-            array('javascript', 'toesslab'),
-            array('css', 'toesslab'),
+            array('javascript', 'foo'),
+            array('css', 'foo'),
         ));
     }
 
