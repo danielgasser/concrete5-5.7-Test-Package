@@ -4,3 +4,5 @@
 - Dashboard Single Page
 - Entity (Doctrine)
 - Simple Block
+- JS/CSS included
+- External JS/CSS included
