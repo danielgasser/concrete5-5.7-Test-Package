@@ -1,6 +1,8 @@
 <?php
 
 namespace Concrete\Package\TestPackage;
+
+use Concrete\Core\Asset\AssetList;
 use Concrete\Core\Asset;
 use Concrete\Core\Foundation\Service\ProviderList;
 use Concrete\Core\Package\Package;
@@ -10,8 +12,6 @@ use Concrete\Package\TestPackage\Help\HelpServiceProvider;
 use Illuminate\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\ClassLoader\Psr4ClassLoader;
-
-defined('C5_EXECUTE') or die(_("Access Denied."));
 
 class Controller extends Package {
 
@@ -53,9 +53,31 @@ class Controller extends Package {
 
     public function on_start()
     {
-        $app = \Core::make('app');
-        $provider = new HelpServiceProvider($app);
-        $provider->register();
+        $pkg = $this;
+        $al = AssetList::getInstance();
+        $al->register(
+            'css', 'toesslab', 'css/toesslab.css', array('position' => \Asset::ASSET_POSITION_HEADER), $pkg
+        );
+        $al->register(
+            'javascript', 'toesslab', 'js/toesslab.js', array('position' => \Asset::ASSET_POSITION_FOOTER), $pkg
+        );
+        $al->register(
+            'css', 'selectize', 'js/libs/selectize/css/selectize.css', array('position' => \Asset::ASSET_POSITION_HEADER), $pkg
+        );
+        $al->register(
+            'javascript', 'selectize', 'js/libs/selectize/js/selectize.js', array('position' => \Asset::ASSET_POSITION_FOOTER), $pkg
+        );
+        $al->registerGroup('foo-bar', array(
+            array('css', 'selectize'),
+            array('javascript', 'selectize'),
+            array('javascript', 'toesslab'),
+            array('css', 'toesslab'),
+        ));
+    }
+
+    private function getPkg ()
+    {
+        return $this->pkgHandle;
     }
 
     private function installOrUpgrade($pkg)
