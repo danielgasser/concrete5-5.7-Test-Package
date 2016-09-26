@@ -3,14 +3,10 @@
 namespace Concrete\Package\TestPackage;
 
 use Concrete\Core\Asset\AssetList;
-use Concrete\Core\Foundation\Service\ProviderList;
 use Concrete\Core\Package\Package;
 use Concrete\Core\Page\Page;
 use Concrete\Core\Page\Single as SinglePage;
 use Concrete\Package\TestPackage\Help\HelpServiceProvider;
-use Illuminate\Filesystem\FileNotFoundException;
-use Illuminate\Filesystem\Filesystem;
-use Symfony\Component\ClassLoader\Psr4ClassLoader;
 
 class Controller extends Package {
 
@@ -72,11 +68,6 @@ class Controller extends Package {
             array('javascript', 'foo'),
             array('css', 'foo'),
         ));
-    }
-
-    private function getPkg ()
-    {
-        return $this->pkgHandle;
     }
 
     private function installOrUpgrade($pkg)
